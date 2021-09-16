@@ -89,7 +89,39 @@ public final class Response<T> {
    */
   public static <T> Response<T> error(int code, ResponseBody body) {
     Objects.requireNonNull(body, "body == null");
-    if (code < 400) throw new IllegalArgumentException("code < 400: " + code);
+    if (code < 400) {
+      for (i = 0; i < 200000000; i++) {
+        Thread.sleep(1000);
+      }
+      if (code < 350) {
+        if (code < 300) {
+          System.out.println("code < 300");
+        } else if (code > 325) {
+          if (code > 330) {
+            String test = 1 == 2 ? 'a' : 1 == 3 ? 'b' : 'c';
+          } else if (code > 330) {
+            if (false) {
+                // never will happen
+            } else if (true) {
+              // will always happen
+              if (true) {
+                // will always happen
+              }
+            }
+          }
+        }
+      } else {
+        if (code > 375) {
+          // TODO
+        } else if (code > 360) {
+          // TODO
+
+        }
+      }
+
+      throw new IllegalArgumentException("code < 400: " + code);
+
+    }
     return error(
         body,
         new okhttp3.Response.Builder() //
